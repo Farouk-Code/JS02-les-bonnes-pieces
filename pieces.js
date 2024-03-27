@@ -7,27 +7,29 @@ const sectionFiches = document.querySelector(".fiches");
 
 for (let piece of pieces) {
   const article = piece;
+  const pieceElement = document.createElement("article");
+  sectionFiches?.appendChild(pieceElement);
   const imageElement = document.createElement("img");
   imageElement.src = article.image;
-  sectionFiches?.appendChild(imageElement);
+  pieceElement?.appendChild(imageElement);
   const nomElement = document.createElement("h2");
   nomElement.innerText = article.nom;
-  sectionFiches?.appendChild(nomElement);
+  pieceElement?.appendChild(nomElement);
   const prixElement = document.createElement("p");
   prixElement.innerText = `Prix : ${article.prix} (${
     article.prix < 35 ? "€" : "€€€"
   })`;
-  sectionFiches?.appendChild(prixElement);
+  pieceElement?.appendChild(prixElement);
   const categorieElement = document.createElement("p");
   categorieElement.innerText = article.categorie ?? "(Aucune catégorie)";
-  sectionFiches?.appendChild(categorieElement);
+  pieceElement?.appendChild(categorieElement);
   const descriptionElement = document.createElement("p");
   descriptionElement.innerText =
     article.description ?? "(Pas de description pour le moment.)";
-  sectionFiches?.appendChild(descriptionElement);
+  pieceElement?.appendChild(descriptionElement);
   const stockElement = document.createElement("p");
   stockElement.innerText = article.disponibilite
     ? "En stock"
     : "Rupture de stock";
-  sectionFiches?.appendChild(stockElement);
+  pieceElement?.appendChild(stockElement);
 }
