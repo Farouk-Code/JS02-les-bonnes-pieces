@@ -74,3 +74,37 @@ boutonSansDescription?.addEventListener("click", () => {
   });
   console.log(pieceSansDescription);
 });
+
+const nomsEtPrix = pieces.map((piece) => `${piece.nom} - ${piece.prix}`);
+const abordables = [...nomsEtPrix];
+for (let i = pieces.length - 1; i >= 0; i--) {
+  if (pieces[i].prix > 35) {
+    abordables.splice(i, 1);
+  }
+}
+
+// Creation de la liste
+const listeAbordables = document.createElement("ul");
+for (let abordable of abordables) {
+  const abordableElement = document.createElement("li");
+  abordableElement.innerText = abordable;
+  listeAbordables.appendChild(abordableElement);
+}
+
+document.querySelector(".abordables")?.appendChild(listeAbordables);
+
+const disponibles = [...nomsEtPrix];
+for (let i = pieces.length - 1; i >= 0; i--) {
+  if (!pieces[i].disponibilite) {
+    disponibles.splice(i, 1);
+  }
+}
+
+const listeDisponibles = document.createElement("ul");
+for (let disponible of disponibles) {
+  const disponibleElement = document.createElement("li");
+  disponibleElement.innerText = disponible;
+  listeDisponibles.appendChild(disponibleElement);
+}
+
+document.querySelector(".disponible")?.appendChild(listeDisponibles);
