@@ -5,6 +5,7 @@ const pieces = await reponse.json();
 
 const sectionFiches = document.querySelector(".fiches");
 
+// Afficher les éléments
 for (let piece of pieces) {
   const article = piece;
   const pieceElement = document.createElement("article");
@@ -33,3 +34,13 @@ for (let piece of pieces) {
     : "Rupture de stock";
   pieceElement?.appendChild(stockElement);
 }
+
+// Bouton trier
+const boutonTrier = document.querySelector(".btn-trier");
+boutonTrier?.addEventListener("click", () => {
+  const piecesOrdonnee = [...pieces];
+  piecesOrdonnee.sort((a, b) => {
+    return a.prix - b.prix;
+  });
+  console.log(piecesOrdonnee);
+});
