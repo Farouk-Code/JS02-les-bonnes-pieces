@@ -1,7 +1,8 @@
 import { ajouterListenersAvis } from "./avis.js";
 
 // @ts-ignore
-const pieces = await fetch("pieces-autos.json").then((pieces) => pieces.json());
+const reponse = await fetch("http://localhost:8081/pieces");
+const pieces = await reponse.json();
 
 const sectionFiches = document.querySelector(".fiches");
 
