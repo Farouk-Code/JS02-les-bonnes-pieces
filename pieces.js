@@ -1,3 +1,5 @@
+import { ajouterListenersAvis } from "./avis.js";
+
 // @ts-ignore
 const pieces = await fetch("pieces-autos.json").then((pieces) => pieces.json());
 
@@ -34,7 +36,12 @@ function genererPieces(pieces) {
       ? "En stock"
       : "Rupture de stock";
     pieceElement.appendChild(stockElement);
+    const buttonCommentairesElement = document.createElement("button");
+    buttonCommentairesElement.dataset.id = piece.id;
+    buttonCommentairesElement.textContent = "Afficher les avis";
+    pieceElement.appendChild(buttonCommentairesElement);
   }
+  ajouterListenersAvis();
 }
 
 genererPieces(pieces);
