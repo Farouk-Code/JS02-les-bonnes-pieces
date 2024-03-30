@@ -32,6 +32,8 @@ export function ajoutListenerEnvoyerAvis() {
       utilisateur: event.target.querySelector("[name=utilisateur]").value,
       //@ts-ignore
       commentaire: event.target.querySelector("[name=commentaire]").value,
+      //@ts-ignore
+      note: Number(event.target.querySelector("[name=nb-etoiles]").value),
     };
 
     const chargeUtile = JSON.stringify(avis);
